@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Command | Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="index.html" class="logo">SENTINEL</a>
+    <div class="nav-links">
+      <a href="dashboard.html">DASHBOARD</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="missions.html">MISSIONS</a>
+      <a href="intel.html">INTEL</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="terminal-header">
+      <span class="terminal-dot red"></span>
+      <span class="terminal-dot yellow"></span>
+      <span class="terminal-dot green"></span>
+      <span class="terminal-label">SECURE TERMINAL v2.5</span>
+    </div>
+    
+    <h2>◉ COMMAND LOGIN ◉</h2>
+    
+    <div class="security-badge">
+      <span class="lock-icon">🔒</span>
+      <span>CLASSIFIED ACCESS</span>
+    </div>
+    
+    <form onsubmit="return login(event)">
+      <div class="input-group">
+        <label for="username">CALLSIGN</label>
+        <input id="username" type="text" placeholder="e.g., GHOST-7" value="GHOST-7" required>
+      </div>
+      <div class="input-group">
+        <label for="password">CLEARANCE CODE</label>
+        <input id="password" type="password" placeholder="••••••••" value="password123" required>
+      </div>
+      
+      <button type="submit">VERIFY & ACCESS</button>
+    </form>
+    
+    <div style="margin-top: 20px; padding: 10px; background: rgba(0, 255, 100, 0.1); border-radius: 8px;">
+      <p style="color: var(--primary-green); margin: 0;">🔧 DEBUG INFO:</p>
+      <p style="color: var(--text-dim); font-size: 0.8rem; margin: 5px 0 0;" id="debugInfo">
+        Checking localStorage...
+      </p>
+    </div>
+    
+    <p class="signup-prompt">NEW RECRUIT? <a href="signup.html">ENLIST NOW →</a></p>
+    
+    <div style="margin-top: 20px; text-align: center;">
+      <button onclick="testReset()" style="background: transparent; border: 1px solid red; color: red; padding: 5px 10px; font-size: 0.8rem;">RESET ALL DATA</button>
+    </div>
+  </div>
+
+  <script>
+    // Debug info
+    window.onload = function() {
+      const debug = document.getElementById('debugInfo');
+      const saved = localStorage.getItem('sentinelUser');
+      if (saved) {
+        const user = JSON.parse(saved);
+        debug.innerHTML = `✅ Found user: ${user.username}<br>Use "password123" to login`;
+      } else {
+        debug.innerHTML = `❌ No user found. Please sign up first.<br>Click "ENLIST NOW" to create account`;
+      }
+    };
+  </script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

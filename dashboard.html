@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Command | Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkAuth(); loadDashboard()">
+
+  <div class="navbar">
+    <a href="index.html" class="logo">SENTINEL</a>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">DASHBOARD</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="missions.html">MISSIONS</a>
+      <a href="intel.html">INTEL</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <div class="user-indicator">
+      <span class="user-dot"></span>
+      <span id="displayUserShort"></span>
+    </div>
+    <button class="logout-btn" onclick="logout()">LOGOUT</button>
+  </div>
+
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <div>
+        <h1>COMMAND CENTER</h1>
+        <p class="welcome-message" id="welcomeMessage">Welcome back, Commander</p>
+      </div>
+      <div class="header-right">
+        <div class="status-badge">ACTIVE</div>
+        <div class="timestamp" id="currentTime">2084.03.21 07:42</div>
+      </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button class="action-btn" onclick="location.href='missions.html'">
+        <span>🎯</span> NEW MISSION
+      </button>
+      <button class="action-btn" onclick="openComms()">
+        <span>📡</span> COMMS
+      </button>
+      <button class="action-btn" onclick="runDiagnostic()">
+        <span>🔧</span> DIAGNOSTIC
+      </button>
+      <button class="action-btn" onclick="location.href='intel.html'">
+        <span>🔍</span> INTEL BRIEF
+      </button>
+    </div>
+
+    <!-- Stats Grid Enhanced -->
+    <div class="stats-grid">
+      <div class="stat-card" onclick="showDetails('units')">
+        <div class="stat-icon">🛡️</div>
+        <div class="stat-label">ACTIVE UNITS</div>
+        <div class="stat-value">1,284</div>
+        <div class="stat-trend positive">▲ +12% FROM YESTERDAY</div>
+        <div class="stat-detail">12 SQUADRONS DEPLOYED</div>
+      </div>
+      <div class="stat-card" onclick="showDetails('missions')">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-label">ACTIVE MISSIONS</div>
+        <div class="stat-value">47</div>
+        <div class="stat-trend">● 3 PENDING APPROVAL</div>
+        <div class="stat-detail">8 COMPLETED TODAY</div>
+      </div>
+      <div class="stat-card warning" onclick="showDetails('alerts')">
+        <div class="stat-icon">⚠️</div>
+        <div class="stat-label">ACTIVE ALERTS</div>
+        <div class="stat-value">02</div>
+        <div class="stat-trend priority">HIGH PRIORITY - SECTOR 7</div>
+        <div class="stat-detail">RESPONSE REQUIRED</div>
+      </div>
+      <div class="stat-card" onclick="showDetails('intel')">
+        <div class="stat-icon">🔍</div>
+        <div class="stat-label">INTEL REPORTS</div>
+        <div class="stat-value">156</div>
+        <div class="stat-trend">24 NEW SINCE 06:00</div>
+        <div class="stat-detail">12 CLASSIFIED</div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-grid">
+      <div class="card chart-card">
+        <h3>◉ DEPLOYMENT STATUS</h3>
+        <div class="chart-bars">
+          <div class="chart-bar">
+            <span class="bar-label">ALPHA</span>
+            <div class="bar-container">
+              <div class="bar-fill" style="width: 85%"></div>
+            </div>
+            <span class="bar-value">85%</span>
+          </div>
+          <div class="chart-bar">
+            <span class="bar-label">BRAVO</span>
+            <div class="bar-container">
+              <div class="bar-fill" style="width: 62%"></div>
+            </div>
+            <span class="bar-value">62%</span>
+          </div>
+          <div class="chart-bar">
+            <span class="bar-label">CHARLIE</span>
+            <div class="bar-container">
+              <div class="bar-fill" style="width: 93%"></div>
+            </div>
+            <span class="bar-value">93%</span>
+          </div>
+          <div class="chart-bar">
+            <span class="bar-label">DELTA</span>
+            <div class="bar-container">
+              <div class="bar-fill" style="width: 41%"></div>
+            </div>
+            <span class="bar-value">41%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card chart-card">
+        <h3>◉ RESOURCE ALLOCATION</h3>
+        <div class="pie-chart-placeholder">
+          <div class="pie-segment personnel">👥 45%</div>
+          <div class="pie-segment equipment">⚙️ 30%</div>
+          <div class="pie-segment intel">📊 25%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Card Grid -->
+    <div class="card-grid">
+      <div class="card mission-card">
+        <h3>◉ MISSION BRIEFINGS</h3>
+        <div class="mission-list">
+          <div class="mission-item priority-high">
+            <span class="mission-priority">HIGH</span>
+            <span class="mission-name">OPERATION ECHO</span>
+            <span class="status active">ACTIVE</span>
+            <span class="mission-time">T-02:30</span>
+          </div>
+          <div class="mission-item priority-medium">
+            <span class="mission-priority">MEDIUM</span>
+            <span class="mission-name">GUARDIAN PROTOCOL</span>
+            <span class="status standby">STANDBY</span>
+            <span class="mission-time">T+01:15</span>
+          </div>
+          <div class="mission-item priority-low">
+            <span class="mission-priority">LOW</span>
+            <span class="mission-name">SHADOW STRIKE</span>
+            <span class="status completed">COMPLETED</span>
+            <span class="mission-time">-</span>
+          </div>
+          <div class="mission-item priority-critical">
+            <span class="mission-priority">CRITICAL</span>
+            <span class="mission-name">IRON SHIELD</span>
+            <span class="status active">ACTIVE</span>
+            <span class="mission-time">T-00:45</span>
+          </div>
+        </div>
+        <button class="card-btn" onclick="location.href='missions.html'">VIEW ALL MISSIONS →</button>
+      </div>
+
+      <div class="card system-card">
+        <h3>◉ SYSTEM STATUS</h3>
+        <div class="system-grid">
+          <div class="system-item">
+            <span>COMMS NETWORK</span>
+            <span class="status operational">OPERATIONAL</span>
+            <span class="system-metric">98% UPTIME</span>
+          </div>
+          <div class="system-item">
+            <span>DEFENSE GRID</span>
+            <span class="status operational">OPERATIONAL</span>
+            <span class="system-metric">12 ACTIVE NODES</span>
+          </div>
+          <div class="system-item">
+            <span>SURVEILLANCE</span>
+            <span class="status degraded">DEGRADED</span>
+            <span class="system-metric">SECTOR 7 OFFLINE</span>
+          </div>
+          <div class="system-item">
+            <span>POWER CORE</span>
+            <span class="status operational">98%</span>
+            <span class="system-metric">STABLE</span>
+          </div>
+          <div class="system-item">
+            <span>DATA STREAM</span>
+            <span class="status operational">2.4 GB/s</span>
+            <span class="system-metric">NOMINAL</span>
+          </div>
+          <div class="system-item">
+            <span>ENCRYPTION</span>
+            <span class="status operational">AES-256</span>
+            <span class="system-metric">QUANTUM READY</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card timeline-card">
+        <h3>◉ RECENT ACTIVITY</h3>
+        <div class="timeline">
+          <div class="timeline-item critical">
+            <span class="timeline-time">06:42</span>
+            <span class="timeline-event">INTRUSION DETECTED - SECTOR 7</span>
+            <span class="timeline-status">RESPONDING</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-time">05:23</span>
+            <span class="timeline-event">PATROL ROUTE UPDATED</span>
+            <span class="timeline-status">COMPLETED</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-time">04:15</span>
+            <span class="timeline-event">CLEARANCE LEVEL 3 GRANTED</span>
+            <span class="timeline-status">AUTHORIZED</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-time">02:58</span>
+            <span class="timeline-event">MAINTENANCE COMPLETE</span>
+            <span class="timeline-status">VERIFIED</span>
+          </div>
+          <div class="timeline-item warning">
+            <span class="timeline-time">01:30</span>
+            <span class="timeline-event">SATELLITE LINK INTERMITTENT</span>
+            <span class="timeline-status">INVESTIGATING</span>
+          </div>
+        </div>
+        <button class="card-btn" onclick="viewFullLog()">VIEW FULL LOG →</button>
+      </div>
+    </div>
+
+    <!-- Intel Briefing Section -->
+    <div class="intel-section">
+      <div class="section-header">
+        <h2>◉ INTEL BRIEFING</h2>
+        <span class="update-badge">UPDATED 5 MIN AGO</span>
+      </div>
+      <div class="intel-grid">
+        <div class="intel-card">
+          <div class="intel-icon">🌍</div>
+          <div class="intel-content">
+            <h4>SECTOR 7 - ACTIVITY SPIKE</h4>
+            <p>Unusual communications detected. 73% confidence in hostile movement.</p>
+            <span class="intel-meta">SOURCE: SIGINT • 15 MIN AGO</span>
+          </div>
+        </div>
+        <div class="intel-card">
+          <div class="intel-icon">🛰️</div>
+          <div class="intel-content">
+            <h4>SATELLITE RE-ROUTING</h4>
+            <p>KOMPSAT-3 link restored. Coverage gap closed in sector 12.</p>
+            <span class="intel-meta">SOURCE: SPACECOM • 32 MIN AGO</span>
+          </div>
+        </div>
+        <div class="intel-card">
+          <div class="intel-icon">⚠️</div>
+          <div class="intel-content">
+            <h4>CYBER THREAT WARNING</h4>
+            <p>New malware signature detected. Firewalls updated.</p>
+            <span class="intel-meta">SOURCE: CYBERCOM • 47 MIN AGO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

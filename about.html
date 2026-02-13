@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Command | About</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkAuth()">
+
+  <div class="navbar">
+    <a href="index.html" class="logo">SENTINEL</a>
+    <div class="nav-links">
+      <a href="dashboard.html">DASHBOARD</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="missions.html">MISSIONS</a>
+      <a href="intel.html">INTEL</a>
+      <a href="about.html" class="active">ABOUT</a>
+    </div>
+    <button class="logout-btn" onclick="logout()">LOGOUT</button>
+  </div>
+
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h1>SENTINEL COMMAND</h1>
+      <div class="version-badge">v2.5.1 "GHOST"</div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card mission">
+        <h3>◉ MISSION</h3>
+        <p class="mission-text">Sentinel Command provides real-time tactical oversight and coordination for critical defense operations. Our advanced command interface enables secure communication, mission planning, and resource allocation across all operational sectors.</p>
+      </div>
+
+      <div class="about-card capabilities">
+        <h3>◉ CORE CAPABILITIES</h3>
+        <ul class="capability-list">
+          <li>Real-time threat detection and analysis</li>
+          <li>Secure multi-channel communications</li>
+          <li>Automated resource allocation</li>
+          <li>Predictive threat modeling</li>
+          <li>Cross-sector coordination</li>
+          <li>Quantum-resistant encryption</li>
+        </ul>
+      </div>
+
+      <div class="about-card stats">
+        <h3>◉ SYSTEM METRICS</h3>
+        <div class="metric-item">
+          <span>ACTIVE USERS</span>
+          <span>1,284</span>
+        </div>
+        <div class="metric-item">
+          <span>PROCESSED INTELLIGENCE</span>
+          <span>2.4M FILES</span>
+        </div>
+        <div class="metric-item">
+          <span>UPTIME</span>
+          <span>99.97%</span>
+        </div>
+        <div class="metric-item">
+          <span>SECURE CONNECTIONS</span>
+          <span>47,281</span>
+        </div>
+      </div>
+
+      <div class="about-card team">
+        <h3>◉ COMMAND STRUCTURE</h3>
+        <div class="team-member">
+          <span class="member-rank">HIGH COMMAND</span>
+          <span class="member-name">GEN. MORRISON</span>
+        </div>
+        <div class="team-member">
+          <span class="member-rank">TACTICAL DIRECTOR</span>
+          <span class="member-name">CMDR. REZNIK</span>
+        </div>
+        <div class="team-member">
+          <span class="member-rank">INTEL DIRECTOR</span>
+          <span class="member-name">COL. CHEN</span>
+        </div>
+      </div>
+
+      <div class="about-card tech">
+        <h3>◉ TECHNICAL SPECIFICATIONS</h3>
+        <div class="spec-grid">
+          <div class="spec-item">
+            <span class="spec-label">VERSION</span>
+            <span class="spec-value">2.5.1</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">BUILD</span>
+            <span class="spec-value">2084.02.15</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">PROTOCOL</span>
+            <span class="spec-value">MIL-STD-2084</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">ENCRYPTION</span>
+            <span class="spec-value">AES-256-GCM</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">BACKUP</span>
+            <span class="spec-value">REAL-TIME</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card contact">
+        <h3>◉ CONTACT</h3>
+        <div class="contact-item">
+          <span>📡 COMMAND CHANNEL</span>
+          <span>channel-7@sentinel.mil</span>
+        </div>
+        <div class="contact-item">
+          <span>🛡️ SUPPORT</span>
+          <span>tac.support@sentinel.mil</span>
+        </div>
+        <div class="contact-item">
+          <span>🔒 SECURE REPORTING</span>
+          <span>ig@sentinel.mil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Command | Missions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkAuth()">
+
+  <div class="navbar">
+    <a href="index.html" class="logo">SENTINEL</a>
+    <div class="nav-links">
+      <a href="dashboard.html">DASHBOARD</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="missions.html" class="active">MISSIONS</a>
+      <a href="intel.html">INTEL</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <button class="logout-btn" onclick="logout()">LOGOUT</button>
+  </div>
+
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h1>◉ MISSION PLANNING</h1>
+      <button class="primary-btn" onclick="createMission()">+ NEW MISSION</button>
+    </div>
+
+    <!-- Mission Filters -->
+    <div class="filters-bar">
+      <button class="filter-btn active">ALL</button>
+      <button class="filter-btn">ACTIVE</button>
+      <button class="filter-btn">PENDING</button>
+      <button class="filter-btn">COMPLETED</button>
+      <button class="filter-btn">CRITICAL</button>
+      <select class="filter-select">
+        <option>SORT BY PRIORITY</option>
+        <option>SORT BY TIME</option>
+        <option>SORT BY REGION</option>
+      </select>
+    </div>
+
+    <!-- Missions Grid -->
+    <div class="missions-grid">
+      <div class="mission-card-large critical">
+        <div class="mission-header">
+          <span class="mission-tag critical">CRITICAL</span>
+          <span class="mission-code">OP-ECHO-7</span>
+        </div>
+        <h3>OPERATION ECHO</h3>
+        <div class="mission-details">
+          <div class="detail-item">
+            <span class="detail-label">STATUS</span>
+            <span class="status active">IN PROGRESS</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">TIMER</span>
+            <span class="timer">02:30:15</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">UNITS</span>
+            <span>ALPHA, BRAVO</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">SECTOR</span>
+            <span>7 - NORTHERN GRID</span>
+          </div>
+        </div>
+        <div class="mission-progress">
+          <div class="progress-label">OBJECTIVE COMPLETION</div>
+          <div class="progress-bar-container">
+            <div class="progress-fill" style="width: 68%"></div>
+          </div>
+          <span class="progress-value">68%</span>
+        </div>
+        <div class="mission-actions">
+          <button class="mission-btn">BRIEFING</button>
+          <button class="mission-btn">COMMS</button>
+          <button class="mission-btn">UPDATE</button>
+        </div>
+      </div>
+
+      <div class="mission-card high">
+        <div class="mission-header">
+          <span class="mission-tag high">HIGH</span>
+          <span class="mission-code">OP-GUARD-12</span>
+        </div>
+        <h3>GUARDIAN PROTOCOL</h3>
+        <div class="mission-details">
+          <div class="detail-item">
+            <span class="detail-label">STATUS</span>
+            <span class="status standby">STANDBY</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">START</span>
+            <span>14:30</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">UNITS</span>
+            <span>CHARLIE, DELTA</span>
+          </div>
+        </div>
+        <div class="mission-actions">
+          <button class="mission-btn">BRIEFING</button>
+          <button class="mission-btn">ACTIVATE</button>
+        </div>
+      </div>
+
+      <div class="mission-card medium">
+        <div class="mission-header">
+          <span class="mission-tag medium">MEDIUM</span>
+          <span class="mission-code">OP-SHADOW-4</span>
+        </div>
+        <h3>SHADOW STRIKE</h3>
+        <div class="mission-details">
+          <div class="detail-item">
+            <span class="detail-label">STATUS</span>
+            <span class="status completed">COMPLETED</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">RESULT</span>
+            <span>SUCCESS</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">CASUALTIES</span>
+            <span>0</span>
+          </div>
+        </div>
+        <div class="mission-actions">
+          <button class="mission-btn">REPORT</button>
+          <button class="mission-btn">DEBRIEF</button>
+        </div>
+      </div>
+
+      <div class="mission-card low">
+        <div class="mission-header">
+          <span class="mission-tag low">LOW</span>
+          <span class="mission-code">OP-PATROL-9</span>
+        </div>
+        <h3>BORDER PATROL</h3>
+        <div class="mission-details">
+          <div class="detail-item">
+            <span class="detail-label">STATUS</span>
+            <span class="status standby">SCHEDULED</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">TIME</span>
+            <span>22:00</span>
+          </div>
+        </div>
+        <div class="mission-actions">
+          <button class="mission-btn">BRIEFING</button>
+          <button class="mission-btn">ASSIGN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission Timeline -->
+    <div class="card">
+      <h3>◉ MISSION TIMELINE</h3>
+      <div class="timeline-horizontal">
+        <div class="timeline-point completed">
+          <span class="point-time">06:00</span>
+          <span class="point-label">OP-DAWN</span>
+        </div>
+        <div class="timeline-point active">
+          <span class="point-time">07:30</span>
+          <span class="point-label">OP-ECHO</span>
+        </div>
+        <div class="timeline-point">
+          <span class="point-time">09:00</span>
+          <span class="point-label">OP-GUARDIAN</span>
+        </div>
+        <div class="timeline-point">
+          <span class="point-time">12:00</span>
+          <span class="point-label">OP-SHADOW</span>
+        </div>
+        <div class="timeline-point">
+          <span class="point-time">15:00</span>
+          <span class="point-label">OP-IRON</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Command | Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkAuth(); loadProfile()">
+
+  <div class="navbar">
+    <a href="index.html" class="logo">SENTINEL</a>
+    <div class="nav-links">
+      <a href="dashboard.html">DASHBOARD</a>
+      <a href="profile.html" class="active">PROFILE</a>
+      <a href="missions.html">MISSIONS</a>
+      <a href="intel.html">INTEL</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <button class="logout-btn" onclick="logout()">LOGOUT</button>
+  </div>
+
+  <div class="dashboard">
+    <div class="profile-header enhanced">
+      <div class="profile-avatar large">
+        <div class="avatar-placeholder" id="displayUserInitials">CDR</div>
+      </div>
+      <div class="profile-info">
+        <h1><span id="displayUserRank">COMMANDER</span> <span id="displayUserFull">REZNIK</span></h1>
+        <div class="profile-badges">
+          <span class="badge" id="displayCallsign">CALLSIGN: GHOST-7</span>
+          <span class="badge">CLEARANCE: ALPHA-5</span>
+          <span class="badge">UNIT: 7TH COHORT</span>
+        </div>
+        <div class="profile-metrics">
+          <div class="metric">
+            <span class="metric-value">156</span>
+            <span class="metric-label">MISSIONS</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">12</span>
+            <span class="metric-label">YEARS</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">98%</span>
+            <span class="metric-label">SUCCESS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-tabs">
+      <button class="tab-btn active" onclick="switchTab('personnel')">PERSONNEL</button>
+      <button class="tab-btn" onclick="switchTab('service')">SERVICE RECORD</button>
+      <button class="tab-btn" onclick="switchTab('security')">SECURITY</button>
+      <button class="tab-btn" onclick="switchTab('preferences')">PREFERENCES</button>
+    </div>
+
+    <div id="personnel-tab" class="tab-content active">
+      <div class="card-grid">
+        <div class="card">
+          <h3>◉ PERSONNEL FILE</h3>
+          <div class="info-grid">
+            <div class="info-row">
+              <span class="info-label">FULL NAME</span>
+              <span class="info-value" id="displayFullName">REZNIK, ALEX</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">DATE OF BIRTH</span>
+              <span class="info-value">2055.07.23</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">PLACE OF ORIGIN</span>
+              <span class="info-value">TYSON SECTOR</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">BLOOD TYPE</span>
+              <span class="info-value">O+</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">LANGUAGES</span>
+              <span class="info-value">ENG, RUS, MAND</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>◉ CURRENT ASSIGNMENT</h3>
+          <div class="assignment-details">
+            <div class="assignment-role">
+              <span class="role-title">TACTICAL COMMANDER</span>
+              <span class="role-unit">7TH EXPEDITIONARY FORCE</span>
+            </div>
+            <div class="assignment-location">
+              <span class="location-label">CURRENT POST</span>
+              <span class="location-value">SECTOR 7 HQ</span>
+            </div>
+            <div class="assignment-dates">
+              <span class="dates-label">ASSIGNED</span>
+              <span class="dates-value">2082.11.03 - PRESENT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>◉ SPECIALIZATIONS</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">TACTICAL COMMAND</span>
+              <span class="skill-level expert">EXPERT</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">INTEL ANALYSIS</span>
+              <span class="skill-level advanced">ADVANCED</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">CYBER WARFARE</span>
+              <span class="skill-level intermediate">INTERMEDIATE</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">FIELD MEDIC</span>
+              <span class="skill-level basic">BASIC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="service-tab" class="tab-content">
+      <div class="card">
+        <h3>◉ SERVICE RECORD</h3>
+        <div class="timeline-vertical">
+          <div class="timeline-entry">
+            <div class="timeline-date">2084</div>
+            <div class="timeline-content">
+              <h4>OPERATION ECHO</h4>
+              <p>Commanded joint task force. Successfully neutralized threat.</p>
+              <span class="timeline-award">MERITORIOUS SERVICE MEDAL</span>
+            </div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-date">2083</div>
+            <div class="timeline-content">
+              <h4>OPERATION GUARDIAN</h4>
+              <p>Defense grid coordination. 100% mission success rate.</p>
+              <span class="timeline-award">COMMENDATION</span>
+            </div>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-date">2082</div>
+            <div class="timeline-content">
+              <h4>PROMOTION TO COMMANDER</h4>
+              <p>Advanced to tactical command position.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="security-tab" class="tab-content">
+      <div class="card-grid">
+        <div class="card">
+          <h3>◉ SECURITY CLEARANCE</h3>
+          <div class="clearance-level">ALPHA-5</div>
+          <div class="clearance-details">
+            <p>Granted: 2080.03.21</p>
+            <p>Expires: 2085.03.21</p>
+            <p>Access Level: Top Secret / SI</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>◉ RECENT ACCESS</h3>
+          <div class="access-log">
+            <div class="access-item">
+              <span>DASHBOARD</span>
+              <span>06:42</span>
+            </div>
+            <div class="access-item">
+              <span>INTEL DATABASE</span>
+              <span>05:23</span>
+            </div>
+            <div class="access-item">
+              <span>MISSION PLANNING</span>
+              <span>04:15</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>◉ ACTIVE SESSIONS</h3>
+          <div class="session-item current">
+            <span>Current Session</span>
+            <span>192.168.1.47</span>
+          </div>
+          <div class="session-item">
+            <span>Mobile Device</span>
+            <span>10.0.0.23</span>
+          </div>
+          <button class="security-btn">TERMINATE OTHER SESSIONS</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

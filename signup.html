@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Command | Enlist</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="index.html" class="logo">SENTINEL</a>
+    <div class="nav-links">
+      <a href="dashboard.html">DASHBOARD</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="missions.html">MISSIONS</a>
+      <a href="intel.html">INTEL</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="terminal-header">
+      <span class="terminal-dot red"></span>
+      <span class="terminal-dot yellow"></span>
+      <span class="terminal-dot green"></span>
+      <span class="terminal-label">ENLISTMENT v2.5</span>
+    </div>
+    
+    <h2>◉ NEW RECRUIT ◉</h2>
+    
+    <form onsubmit="return signup(event)">
+      <div class="input-group">
+        <label for="fullname">FULL NAME</label>
+        <input id="fullname" type="text" placeholder="e.g., REZNIK, ALEX" value="REZNIK, ALEX">
+      </div>
+      
+      <div class="input-group">
+        <label for="username">CALLSIGN <span style="color: var(--primary-green);">*</span></label>
+        <input id="username" type="text" placeholder="e.g., GHOST-7" value="GHOST-7" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="password">CLEARANCE CODE <span style="color: var(--primary-green);">*</span></label>
+        <input id="password" type="password" placeholder="Enter code" value="password123" required>
+        <small style="color: var(--text-dim);">Use any password (demo)</small>
+      </div>
+      
+      <button type="submit" style="margin-top: 20px;">CREATE ACCOUNT</button>
+    </form>
+    
+    <div style="margin-top: 20px; padding: 10px; background: rgba(255, 255, 0, 0.1); border-radius: 8px; border: 1px solid yellow;">
+      <p style="color: yellow; margin: 0;">⚠ DEMO MODE: Pre-filled with test data</p>
+    </div>
+    
+    <p style="margin-top: 20px;">ALREADY HAVE CLEARANCE? <a href="index.html">LOGIN →</a></p>
+    
+    <div style="margin-top: 20px; text-align: center;">
+      <button onclick="testReset()" style="background: transparent; border: 1px solid red; color: red; padding: 5px 10px; font-size: 0.8rem;">RESET ALL DATA</button>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

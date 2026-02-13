@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Command | Intelligence</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="checkAuth()">
+
+  <div class="navbar">
+    <a href="index.html" class="logo">SENTINEL</a>
+    <div class="nav-links">
+      <a href="dashboard.html">DASHBOARD</a>
+      <a href="profile.html">PROFILE</a>
+      <a href="missions.html">MISSIONS</a>
+      <a href="intel.html" class="active">INTEL</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <button class="logout-btn" onclick="logout()">LOGOUT</button>
+  </div>
+
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h1>◉ INTELLIGENCE BRIEFING</h1>
+      <div class="intel-level">TOP SECRET // SI // TK</div>
+    </div>
+
+    <!-- Intel Summary -->
+    <div class="intel-summary">
+      <div class="summary-card">
+        <span class="summary-label">SIGINT REPORTS</span>
+        <span class="summary-value">47</span>
+        <span class="summary-trend">+12 NEW</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">HUMINT ASSETS</span>
+        <span class="summary-value">23</span>
+        <span class="summary-trend">ACTIVE</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">IMINT IMAGES</span>
+        <span class="summary-value">1,284</span>
+        <span class="summary-trend">156 ANALYZED</span>
+      </div>
+      <div class="summary-card">
+        <span class="summary-label">THREAT LEVEL</span>
+        <span class="summary-value elevated">ELEVATED</span>
+        <span class="summary-trend">CONFIDENCE 73%</span>
+      </div>
+    </div>
+
+    <!-- Intel Feeds -->
+    <div class="intel-feeds">
+      <div class="feed-card sigint">
+        <div class="feed-header">
+          <h3>◉ SIGINT FEED</h3>
+          <span class="feed-badge">REAL-TIME</span>
+        </div>
+        <div class="feed-content">
+          <div class="feed-item urgent">
+            <span class="feed-time">07:42</span>
+            <span class="feed-source">[COMINT]</span>
+            <span class="feed-message">Encrypted transmission - Sector 7</span>
+            <span class="feed-tag urgent">URGENT</span>
+          </div>
+          <div class="feed-item">
+            <span class="feed-time">07:15</span>
+            <span class="feed-source">[ELINT]</span>
+            <span class="feed-message">Radar signature - Unknown aircraft</span>
+            <span class="feed-tag">ANALYZING</span>
+          </div>
+          <div class="feed-item">
+            <span class="feed-time">06:58</span>
+            <span class="feed-source">[FISINT]</span>
+            <span class="feed-message">Missile telemetry detected</span>
+            <span class="feed-tag">VERIFIED</span>
+          </div>
+          <div class="feed-item">
+            <span class="feed-time">06:30</span>
+            <span class="feed-source">[COMINT]</span>
+            <span class="feed-message">Command channel traffic spike</span>
+            <span class="feed-tag">MONITORING</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feed-card geoint">
+        <div class="feed-header">
+          <h3>◉ GEOINT / IMINT</h3>
+          <span class="feed-badge">SATELLITE</span>
+        </div>
+        <div class="image-grid">
+          <div class="image-thumb">
+            <div class="thumb-placeholder">SECTOR 7 - 06:42</div>
+            <span class="thumb-label">ANOMALY DETECTED</span>
+          </div>
+          <div class="image-thumb">
+            <div class="thumb-placeholder">SECTOR 12 - 05:30</div>
+            <span class="thumb-label">CLEAR</span>
+          </div>
+          <div class="image-thumb">
+            <div class="thumb-placeholder">SECTOR 4 - 04:15</div>
+            <span class="thumb-label">MOVEMENT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feed-card humint">
+        <div class="feed-header">
+          <h3>◉ HUMINT REPORTS</h3>
+          <span class="feed-badge">CLASSIFIED</span>
+        </div>
+        <div class="humint-list">
+          <div class="humint-item">
+            <span class="humint-source">ASSET ECHO-7</span>
+            <span class="humint-brief">Enemy movement confirmed</span>
+            <span class="humint-time">2h ago</span>
+          </div>
+          <div class="humint-item">
+            <span class="humint-source">ASSET GHOST-3</span>
+            <span class="humint-brief">Supply convoy heading north</span>
+            <span class="humint-time">5h ago</span>
+          </div>
+          <div class="humint-item">
+            <span class="humint-source">ASSET SHADOW-1</span>
+            <span class="humint-brief">Command meeting scheduled</span>
+            <span class="humint-time">8h ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Threat Map -->
+    <div class="card">
+      <h3>◉ THREAT ASSESSMENT MAP</h3>
+      <div class="map-placeholder">
+        <div class="grid-overlay"></div>
+        <div class="threat-marker sector7">SECTOR 7 - HIGH</div>
+        <div class="threat-marker sector12">SECTOR 12 - MED</div>
+        <div class="threat-marker sector4">SECTOR 4 - LOW</div>
+      </div>
+    </div>
+
+    <!-- Intel Reports -->
+    <div class="reports-section">
+      <h3>◉ RECENT INTELLIGENCE REPORTS</h3>
+      <div class="reports-list">
+        <div class="report-item">
+          <span class="report-classification">TOP SECRET</span>
+          <span class="report-title">Enemy Force Disposition - Sector 7</span>
+          <span class="report-date">07:42</span>
+          <button class="report-btn">VIEW</button>
+        </div>
+        <div class="report-item">
+          <span class="report-classification secret">SECRET</span>
+          <span class="report-title">Cyber Attack Surface Analysis</span>
+          <span class="report-date">06:15</span>
+          <button class="report-btn">VIEW</button>
+        </div>
+        <div class="report-item">
+          <span class="report-classification confidential">CONFIDENTIAL</span>
+          <span class="report-title">Supply Route Vulnerability Assessment</span>
+          <span class="report-date">05:30</span>
+          <button class="report-btn">VIEW</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
